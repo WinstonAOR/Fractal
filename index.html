@@ -12,37 +12,43 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Fractal</a>
+                <a href="index.html" class="logo">
+                    <img src="assets/images/Fractal-rounded.png" alt="" height="80">
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">Sobre Nosotros</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tienda</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
+                                <li><a class="dropdown-item" href="#!">Todos los productos</a></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                                <li><a class="dropdown-item" href="#!">Promociones</a></li>
+                                <li><a class="dropdown-item" href="#!">Nuevos tragos</a></li>
                             </ul>
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
+                        <button class="btn btn-outline-dark" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <i class="bi-cart-fill me-1"></i>
                             Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <span id="carrito" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </form>
                 </div>
             </div>
         </nav>
+
+
+        
         <!-- Header-->
         <header class="bg-dark py-5">
 
@@ -73,7 +79,52 @@
                 </button>
               </div>
 
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Carrito de Compra</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table">
+                        <tr>
+                            <td id="tdTrago">
+                                
+                            </td>
+                            <td id="tdX">
+                                <p> x </p>
+                            </td>
+                            <td id="tdCantidad">
+                            </td>
+                            <td id="tdMonto">
+                            </td>
+                        </tr>
+                        <tr>
+                           <td>
+                                <h3>Monto Total</h3>
+                           </td>
+                           <td id="tdMontoT">
 
+                           </td> 
+                        </tr>
+                        <!-- <td id="btnMenos">
+                        </td>
+                        <td id="btnMas">
+
+                        </td> -->
+                    </table>
+                
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Pagar</button>
+                </div>
+            </div>
+            </div>
+        </div>
             
         </header>
         <!-- Section-->
@@ -104,7 +155,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Añadir al carrito</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="addToCart('Mojito', 4)">Añadir al carrito</a></div>
                             </div>
                         </div>
                     </div>
@@ -129,12 +180,12 @@
                                     </div>
                                     <!-- Product price-->
                                     <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
+                                    $5
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Añadir al carrito</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="addToCart('Margarita', 5)">Añadir al carrito</a></div>
                             </div>
                         </div>
                     </div>
@@ -159,12 +210,12 @@
                                     </div>
                                     <!-- Product price-->
                                     <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
+                                    $5
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Añadir al carrito</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="addToCart('Daiquiri', 5)">Añadir al carrito</a></div>
                             </div>
                         </div>
                     </div>
@@ -186,12 +237,12 @@
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     <!-- Product price-->
-                                    $40.00
+                                    $10
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Añadir al carrito</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="addToCart('Negroni', 10)">Añadir al carrito</a></div>
                             </div>
                         </div>
                     </div>
@@ -216,12 +267,12 @@
                                     </div>
                                     <!-- Product price-->
                                     <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
+                                    $12
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Añadir al carrito</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="addToCart('Old Fashioned', 12)">Añadir al carrito</a></div>
                             </div>
                         </div>
                     </div>
@@ -243,12 +294,12 @@
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     <!-- Product price-->
-                                    $120.00 - $280.00
+                                    $12
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Añadir al carrito</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="addToCart('Whisky Sour', 12)">Añadir al carrito</a></div>
                             </div>
                         </div>
                     </div>
@@ -273,12 +324,12 @@
                                     </div>
                                     <!-- Product price-->
                                     <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
+                                    $16
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Añadir al carrito</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="addToCart('Manhattan', 16)">Añadir al carrito</a></div>
                             </div>
                         </div>
                     </div>
@@ -300,12 +351,12 @@
                                         <div class="bi-star-fill"></div>
                                     </div>
                                     <!-- Product price-->
-                                    $40.00
+                                    $20.00
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Añadir al carrito</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" onclick="addToCart('Aperol Spritz', 20)">Añadir al carrito</a></div>
                             </div>
                         </div>
                     </div>
